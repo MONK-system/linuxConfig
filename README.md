@@ -24,7 +24,7 @@ Login as the non-root user, use sudo in front of commands that need it from now 
 
 # DWM configuration:
     cd ~/
-    git clone https://github.com/jonafoll/dwmKioskMode
+    git clone https://github.com/MONK-system/linuxConfig
 
     cd dwmKioskMode
     cp config.h ~/.config/dwm
