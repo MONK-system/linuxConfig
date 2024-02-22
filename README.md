@@ -42,7 +42,7 @@ Login as the non-root user, use sudo in front of commands that need it from now 
     cd ~/linuxConfig
     mv ~/.bash_profile.txt ~/
     cd ~/
-    cat bash_profile.txt >> ~/bash_profile
+    cat .bash_profile.txt >> ~/bash_profile
 
 # startx
 When you login to the user, it should launch right into surf browser in kiosk mode.
