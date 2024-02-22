@@ -26,20 +26,20 @@ Login as the non-root user, use sudo in front of commands that need it from now 
     cd ~/
     git clone https://github.com/MONK-system/linuxConfig
 
-    cd dwmKioskMode
+    cd linuxConfig
     cp config.h ~/.config/dwm
 
     cd ~/.config/dwm
     make clean install
 
 # .xinitrc setup:
-    cd ~/dwmKioskMode
+    cd ~/linuxConfig
     mv .xinitrc.txt ~/
     cd ~/
     cat .xinitrc.txt >> ~/.xinitrc
 
 # Autostart on login
-    cd ~/dwmKioskMode
+    cd ~/linuxConfig
     mv ~/.bash_profile.txt ~/
     cd ~/
     cat bash_profile.txt >> ~/bash_profile
