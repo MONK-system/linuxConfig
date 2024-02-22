@@ -9,7 +9,7 @@ UNCHECK DEBIAN DESKTOP AND GNOME DURING INSTALLATION
 
 First log in as root
 
-    apt install vim git surf xserver-xorg-core xinit xinput x11-xserver-utils build-essentials libx11-dev libxinerama-dev libxft-dev  
+    apt install vim git surf xserver-xorg-core xinit xinput x11-xserver-utils build-essential libx11-dev libxinerama-dev libxft-dev  
     usermod -aG sudo user
     exit
     
