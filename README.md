@@ -9,7 +9,10 @@ UNCHECK DEBIAN DESKTOP AND GNOME DURING INSTALLATION
 
 First log in as root
 
-    apt install vim git surf xserver-xorg-core xinit xinput x11-xserver-utils build-essential libx11-dev libxinerama-dev libxft-dev  
+    apt install git sudo
+    git clone https://github.com/MONK-system/linuxConfig
+    ./linuxConfig/packages.sh
+
     usermod -aG sudo user
     exit
     
@@ -23,26 +26,23 @@ Login as the non-root user, use sudo in front of commands that need it from now 
     make clean install
 
 # DWM configuration:
-    cd ~/
+    cd 
     git clone https://github.com/MONK-system/linuxConfig
 
-    cd linuxConfig
-    cp config.h ~/.config/dwm
+    cp linuxConfig/config.h ~/.config/dwm
 
     cd ~/.config/dwm
     make clean install
 
 # .xinitrc setup:
-    cd ~/linuxConfig
-    mv .xinitrc.txt ~/
-    cd ~/
+    cd
+    mv linuxConfig/.xinitrc.txt ~/
     cat .xinitrc.txt >> ~/.xinitrc
 
 # Autostart on login
-    cd ~/linuxConfig
-    mv ~/.bash_profile.txt ~/
-    cd ~/
-    cat .bash_profile.txt >> ~/bash_profile
+    cd 
+    mv linuxConfig/.profile ~/
+    cat .profile >> ~/.profile
 
 # startx
 When you login to the user, it should launch right into surf browser in kiosk mode.
