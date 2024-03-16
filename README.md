@@ -10,20 +10,19 @@ UNCHECK DEBIAN DESKTOP AND GNOME DURING INSTALLATION
 First log in as root
 
     apt install git sudo
-    git clone https://github.com/MONK-system/linuxConfig
-    ./linuxConfig/packages.sh
-
     usermod -aG sudo user
     exit
     
 Login as the non-root user, use sudo in front of commands that need it from now on.
+
+    git clone https://github.com/MONK-system/linuxConfig
+    ./linuxConfig/packages.sh
 
 # DWM build:
     mkdir .config
     cd .config
     git clone https://git.suckless.org/dwm
     cd dwm
-    make clean install
 
 # DWM configuration:
     cd 
@@ -37,7 +36,7 @@ Login as the non-root user, use sudo in front of commands that need it from now 
 # .xinitrc setup:
     cd
     mv linuxConfig/.xinitrc.txt ~/
-    cat .xinitrc.txt >> ~/.xinitrc
+    cat .xinitrc >> ~/.xinitrc
 
 # Autostart on login
     cd 
@@ -46,3 +45,8 @@ Login as the non-root user, use sudo in front of commands that need it from now 
 
 # startx
 When you login to the user, it should launch right into surf browser in kiosk mode.
+
+# Python Setup
+    cd 
+    git clone https://github.com/MONK-system/system
+
