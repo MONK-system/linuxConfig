@@ -35,12 +35,10 @@ Login as the non-root user, use sudo in front of commands that need it from now 
 
 # .xinitrc setup:
     cd
-    mv linuxConfig/.xinitrc.txt ~/
-    cat .xinitrc >> ~/.xinitrc
+    cat xinitrc >> ~/.xinitrc
 
 # Autostart on login
     cd 
-    mv linuxConfig/.profile ~/
     cat .profile >> ~/.profile
 
 # startx
@@ -49,4 +47,5 @@ When you login to the user, it should launch right into surf browser in kiosk mo
 # Python Setup
     cd 
     git clone https://github.com/MONK-system/system
+    (TEMPORARY): git checkout dev
 
