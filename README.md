@@ -5,6 +5,7 @@ Modify the URL in .xinitrc to change website. Might bug out if it is a website w
 
 # Setup for Debian network install
 https://www.debian.org/CD/netinst/
+
 UNCHECK DEBIAN DESKTOP AND GNOME DURING INSTALLATION
 
 First log in as root
@@ -22,12 +23,8 @@ Login as the non-root user, use sudo in front of commands that need it from now 
     mkdir .config
     cd .config
     git clone https://git.suckless.org/dwm
-    cd dwm
 
 # DWM configuration:
-    cd 
-    git clone https://github.com/MONK-system/linuxConfig
-
     cp linuxConfig/config.h ~/.config/dwm
 
     cd ~/.config/dwm
@@ -35,11 +32,11 @@ Login as the non-root user, use sudo in front of commands that need it from now 
 
 # .xinitrc setup:
     cd
-    cat xinitrc >> ~/.xinitrc
+    mv linuxConfig/.xinitrc ~/
 
 # Autostart on login
     cd 
-    cat .profile >> ~/.profile
+    cat linuxConfig/.profile >> ~/.profile
 
 # startx
 When you login to the user, it should launch right into surf browser in kiosk mode.
@@ -49,3 +46,30 @@ When you login to the user, it should launch right into surf browser in kiosk mo
     git clone https://github.com/MONK-system/system
     (TEMPORARY): git checkout dev
 
+# Samba File Share Setup
+    mkdir /samba_share
+    cat ~/linuxConfig/smb.conf >> /etc/samba/smb.conf
+
+    groupadd smbshare
+    chgrp -R smbshare /samba_share
+    chmod 2770 /samba_share
+
+    usermod -aG smbshare user
+
+    smbpasswd -a user
+    smbpasswd -e user
+
+    systemctl restart nmbd
+
+For testing:
+    mkdir /samba_share/testDir
+    touch /samba_share/testFile.txt
+    systemctl restart nmbd
+
+    smbclient '\\localhost\private' -U user
+    ls
+
+Windows Client setup:
+    Win+R
+    \\<ip-from-linux-machine, get with "ip a">
+    
