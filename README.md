@@ -30,6 +30,12 @@ Login as the non-root user, use sudo in front of commands that need it from now 
     cd ~/.config/dwm
     make clean install
 
+# SURF configuration
+Add file permission for surf browser:
+
+    cat linuxConfig/usr.bin.surf >> /etc/apparmor.d/usr.bin.surf 
+    apparmor_parser -r /etc/apparmor.d/usr.bin.surf 
+
 # .xinitrc setup:
     cd
     mv linuxConfig/.xinitrc ~/
