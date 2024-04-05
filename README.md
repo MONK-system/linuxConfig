@@ -55,7 +55,7 @@ When you login to the user, it should launch right into surf browser in kiosk mo
     source monkenv/bin/activate
     pip install gunicorn
     
-Need to add you IP under ALLOWED_HOSTS in monksystem/settings.py
+Need to add you IP under ALLOWED_HOSTS in monksystem/settings.py (Find it with "ip a")
 If you get OperationalError at / no such table: django_session, run python manage.py migrate 
 
 # Samba File Share Setup
