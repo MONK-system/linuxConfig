@@ -50,7 +50,13 @@ When you login to the user, it should launch right into surf browser in kiosk mo
 # Python Setup
     cd 
     git clone https://github.com/MONK-system/system
-    (TEMPORARY): git checkout dev
+    (TEMPORARY): git checkout lib
+    virtualenv monkenv
+    source monkenv/bin/activate
+    pip install gunicorn
+    
+Need to add you IP under ALLOWED_HOSTS in monksystem/settings.py
+If you get OperationalError at / no such table: django_session, run python manage.py migrate 
 
 # Samba File Share Setup
     mkdir /samba_share
