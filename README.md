@@ -58,6 +58,11 @@ When you login to the user, it should launch right into surf browser in kiosk mo
 Need to add you IP under ALLOWED_HOSTS in monksystem/settings.py (Find it with "ip a")
 If you get OperationalError at / no such table: django_session, run python manage.py migrate 
 
+# NGINX setup
+  mv ~/linuxConfig/monkserver /etc/nginx/sites-available/
+  ln -s /etc/nginx/sites-available/monkserver /etc/nginx/sites-enabled/
+  systemctl restart nginx
+
 # Samba File Share Setup
     mkdir /samba_share
     cat ~/linuxConfig/smb.conf >> /etc/samba/smb.conf
