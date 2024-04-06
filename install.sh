@@ -50,6 +50,9 @@ sudo git checkout lib
 echo "Creating virtual environment and installing gunicorn..."
 # Creating virtual environment and installing gunicorn
 sudo virtualenv monkenv
+sudo chown -R $USER:$USER $HOME/system/monkenv
+sudo chmod -R u+w $HOME/system/monkenv
+
 source $HOME/system/monkenv/bin/activate
 pip install gunicorn
 pip install django
