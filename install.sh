@@ -41,7 +41,7 @@ sudo cat $HOME/linuxConfig/.profile >>$HOME/.profile
 
 echo "Cloning and setting up MONK system..."
 # Cloning and setting up MONK system
-sudo git clone https://github.com/MONK-system/system $HOME/
+sudo git clone https://github.com/MONK-system/system $HOME/system
 
 echo "Switching to the 'lib' branch in the system repository..."
 cd $HOME/system
@@ -49,9 +49,10 @@ sudo git checkout lib
 
 echo "Creating virtual environment and installing gunicorn..."
 # Creating virtual environment and installing gunicorn
-virtualenv monkenv
+sudo virtualenv monkenv
 source $HOME/system/monkenv/bin/activate
 pip install gunicorn
+pip install django
 
 echo "Script completed. Running MonkSystem"
 source $HOME/.profile
