@@ -18,7 +18,7 @@ mkdir $HOME/.config
 echo "Cloning and configuring DWM..."
 # Installs and configures DWM
 sudo git clone https://git.suckless.org/dwm $HOME/.config/dwm
-sudo cp $HOME/.linuxConfig/config.h $HOME/.config/dwm
+sudo cp $HOME/linuxConfig/config.h $HOME/.config/dwm
 cd $HOME/.config/dwm
 sudo make clean install
 
