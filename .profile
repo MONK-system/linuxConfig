@@ -1,5 +1,5 @@
-source /monk/system/monkenv/bin/activate
-cd /monk/system/monksystem
+source $HOME/system/monkenv/bin/activate
+cd $HOME/system/monksystem
 
 gunicorn --bind 127.0.0.0:8000 monksystem.wsgi:application &
 
