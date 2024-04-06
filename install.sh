@@ -10,22 +10,22 @@ fi
 
 echo "Running the packages script..."
 # Runs the packages script
-#sudo /home/$USER/linuxConfig/packages.sh
+#sudo $HOME/linuxConfig/packages.sh
 
 echo "Creating ~/.config directory..."
-mkdir ~/.config
+mkdir $HOME/.config
 
 echo "Cloning and configuring DWM..."
 # Installs and configures DWM
-sudo git clone https://git.suckless.org/dwm /home/$USER/.config/dwm
-sudo cp /home/$USER/.linuxConfig/config.h ~/.config/dwm
-cd ~/.config/dwm
+sudo git clone https://git.suckless.org/dwm $HOME/.config/dwm
+sudo cp $HOME/.linuxConfig/config.h $HOME/.config/dwm
+cd $HOME/.config/dwm
 sudo make clean install
 
 echo "Appending content to /etc/apparmor.d/usr.bin.surf..."
 # Append content to /etc/apparmor.d/usr.bin.surf
-content=$(cat ~/linuxConfig/usr.bin.surf)
-sed -i '${/}/s/$/'"$content"'/' /etc/apparmor.d/usr.bin.surf
+# content=$(cat ~/linuxConfig/usr.bin.surf)
+# sed -i '${/}/s/$/'"$content"'/' /etc/apparmor.d/usr.bin.surf
 
 echo "Reloading AppArmor profile..."
 # Reload AppArmor profile
@@ -33,25 +33,25 @@ apparmor_parser -r /etc/apparmor.d/usr.bin.surf
 
 echo "Moving .xinitrc file..."
 # Move .xinitrc file
-mv ~/linuxConfig/.xinitrc ~/
+sudo mv $HOME/linuxConfig/.xinitrc $HOME/
 
 echo "Appending content to ~/.profile..."
 # Append content to ~/.profile
-sudo cat /home/$USER/linuxConfig/.profile >>/home/$USER/.profile
+sudo cat $HOME/linuxConfig/.profile >>$HOME/.profile
 
 echo "Cloning and setting up MONK system..."
 # Cloning and setting up MONK system
-sudo git clone https://github.com/MONK-system/system /home/$USER/
+sudo git clone https://github.com/MONK-system/system $HOME/
 
 echo "Switching to the 'lib' branch in the system repository..."
-cd ~/system
+cd $HOME/system
 sudo git checkout lib
 
 echo "Creating virtual environment and installing gunicorn..."
 # Creating virtual environment and installing gunicorn
 virtualenv monkenv
-source monkenv/bin/activate
+source $HOME/system/monkenv/bin/activate
 pip install gunicorn
 
 echo "Script completed. Running MonkSystem"
-source ~/.profile
+source $HOME/.profile
