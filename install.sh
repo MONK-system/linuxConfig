@@ -39,6 +39,10 @@ echo "Appending content to ~/.profile..."
 # Append content to ~/.profile
 sudo cat $HOME/linuxConfig/.profile >>$HOME/.profile
 
+sudo mv $HOME/linuxConfig/monkserver /etc/nginx/sites-available/
+sudo ln -s /etc/nginx/sites-available/monkserver /etc/nginx/sites-enabled/
+sudo systemctl restart nginx
+
 echo "Cloning and setting up MONK system..."
 # Cloning and setting up MONK system
 sudo git clone https://github.com/MONK-system/system $HOME/system
