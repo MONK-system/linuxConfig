@@ -29,7 +29,7 @@ sudo su -c '
 
 echo "Reloading AppArmor profile..."
 # Reload AppArmor profile
-apparmor_parser -r /etc/apparmor.d/usr.bin.surf
+sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
 
 echo "Moving .xinitrc file..."
 # Move .xinitrc file
