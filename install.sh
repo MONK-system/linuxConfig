@@ -53,9 +53,11 @@ sudo git checkout dev
 
 echo "Fixing permissions for database"
 sudo chmod 660 $HOME/system/monksystem/db.sqlite3
+sudo chmod 775 $HOME/system/monksystem/nihon_kohden_files/
 sudo chmod 775 $HOME/system/monksystem/
 
 sudo chown $USER:$USER $HOME/system/monksystem/db.sqlite3
+sudo chown $USER:$USER $HOME/system/monksystem/nihon_kohden_files/
 sudo chown $USER:$USER $HOME/system/monksystem/
 
 echo "Creating virtual environment and installing gunicorn..."
