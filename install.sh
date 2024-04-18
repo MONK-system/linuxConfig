@@ -47,9 +47,9 @@ echo "Cloning and setting up MONK system..."
 # Cloning and setting up MONK system
 sudo git clone https://github.com/MONK-system/system $HOME/system
 
-echo "Switching to the 'dev' branch in the system repository..."
+echo "Switching to the 'lib' branch in the system repository..."
 cd $HOME/system
-sudo git checkout dev
+sudo git checkout lib
 
 echo "Fixing permissions for database"
 sudo chmod 660 $HOME/system/monksystem/db.sqlite3
@@ -69,6 +69,7 @@ sudo chmod -R u+w $HOME/system/monkenv
 source $HOME/system/monkenv/bin/activate
 pip install gunicorn
 pip install django
+pip install git+https://github.com/MONK-system/library.git
 
-echo "Script completed. Running MonkSystem"
-source $HOME/.profile
+echo "Script completed. Restart to run MonkSystem"
+#source $HOME/.profile
