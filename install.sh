@@ -67,9 +67,7 @@ sudo chown -R $USER:$USER $HOME/system/monkenv
 sudo chmod -R u+w $HOME/system/monkenv
 
 source $HOME/system/monkenv/bin/activate
-pip install gunicorn
-pip install django
-pip install git+https://github.com/MONK-system/library.git
+pip install gunicorn django plotly numpy pandas git+https://github.com/MONK-system/library.git
 
 echo "Script completed. Restart to run MonkSystem"
 source $HOME/.profile
