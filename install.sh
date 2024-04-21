@@ -60,6 +60,20 @@ sudo chown $USER:$USER $HOME/system/monksystem/db.sqlite3
 sudo chown $USER:$USER $HOME/system/monksystem/nihon_kohden_files/
 sudo chown $USER:$USER $HOME/system/monksystem/
 
+echo "Setting up Samba File Share"
+sudo mkdir /samba_share
+sudo cat $HOME/linuxConfig/smb.conf >>/etc/samba/smb.conf
+sudo groupadd smbshare
+sudo chgrp -R smbshare /samba_share
+sudo chmod 2770 /samba_share
+
+sudo usermod -aG smbshare $USER
+
+sudo smbpasswd -a $USER
+sudo smbpasswd -e $USER
+
+sudo systemctl restart nmbd
+
 echo "Creating virtual environment and installing gunicorn..."
 # Creating virtual environment and installing gunicorn
 sudo virtualenv monkenv
