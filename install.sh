@@ -28,7 +28,7 @@ sudo su -c '
 
           echo "Setting up Samba File Share"
           sudo mkdir /samba_share
-          sudo cat monk/linuxConfig/smb.conf >>/etc/samba/smb.conf
+          sudo cat /home/monk/linuxConfig/smb.conf >>/etc/samba/smb.conf
           sudo groupadd smbshare
           sudo chgrp -R smbshare /samba_share
           sudo chmod 2770 /samba_share
