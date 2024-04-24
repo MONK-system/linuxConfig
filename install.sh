@@ -82,7 +82,7 @@ sudo chmod -R u+w $HOME/system/monkenv
 
 source $HOME/system/monkenv/bin/activate
 pip install gunicorn django plotly numpy pandas git+https://github.com/MONK-system/library.git
-python manage.py migrate
+python3 $HOME/system/monksystem/manage.py migrate
 
 echo "Script completed. Restart to run MonkSystem"
 #source $HOME/.profile
