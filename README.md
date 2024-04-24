@@ -8,10 +8,12 @@ https://www.debian.org/CD/netinst/
 
 UNCHECK DEBIAN DESKTOP AND GNOME DURING INSTALLATION
 
+Make new user called "monk"
+
 First log in as root
 
     apt install git sudo
-    usermod -aG sudo user
+    usermod -aG sudo monk
     exit
     
 Login as the non-root user, and run the following commands:
