@@ -28,7 +28,7 @@ sudo su -c '
 
           echo "Setting up Samba File Share"
           sudo mkdir /samba_share
-          sudo cat $HOME/linuxConfig/smb.conf >>/etc/samba/smb.conf
+          sudo cat monk/linuxConfig/smb.conf >>/etc/samba/smb.conf
           sudo groupadd smbshare
           sudo chgrp -R smbshare /samba_share
           sudo chmod 2770 /samba_share
@@ -64,15 +64,15 @@ sudo git clone https://github.com/MONK-system/system $HOME/system
 echo "Switching to the 'dev' branch in the system repository..."
 cd $HOME/system
 sudo git checkout lib
-
-echo "Fixing permissions for database"
-sudo chmod 660 $HOME/system/monksystem/db.sqlite3
-sudo chmod 775 $HOME/system/monksystem/nihon_kohden_files/
-sudo chmod 775 $HOME/system/monksystem/
-
-sudo chown $USER:$USER $HOME/system/monksystem/db.sqlite3
-sudo chown $USER:$USER $HOME/system/monksystem/nihon_kohden_files/
-sudo chown $USER:$USER $HOME/system/monksystem/
+#
+# echo "Fixing permissions for database"
+# sudo chmod 660 $HOME/system/monksystem/db.sqlite3
+# sudo chmod 775 $HOME/system/monksystem/nihon_kohden_files/
+# sudo chmod 775 $HOME/system/monksystem/
+#
+# sudo chown $USER:$USER $HOME/system/monksystem/db.sqlite3
+# sudo chown $USER:$USER $HOME/system/monksystem/nihon_kohden_files/
+# sudo chown $USER:$USER $HOME/system/monksystem/
 
 echo "Creating virtual environment and installing gunicorn..."
 # Creating virtual environment and installing gunicorn
@@ -82,6 +82,7 @@ sudo chmod -R u+w $HOME/system/monkenv
 
 source $HOME/system/monkenv/bin/activate
 pip install gunicorn django plotly numpy pandas git+https://github.com/MONK-system/library.git
+python manage.py migrate
 
 echo "Script completed. Restart to run MonkSystem"
 #source $HOME/.profile
