@@ -50,6 +50,8 @@ There is a Vagrant box for the system, which you can install with the following 
 ```
 7. Now you can access the box in Virtualbox
 
+### NOTE: username: vagrant, password:vagrant, root password: vagrant
+
 # Samba File Share 
 
 For testing:
