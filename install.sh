@@ -63,7 +63,7 @@ sudo git clone https://github.com/MONK-system/system $HOME/system
 
 echo "Switching to the 'dev' branch in the system repository..."
 cd $HOME/system
-sudo git checkout lib
+sudo git checkout main
 #
 # echo "Fixing permissions for database"
 # sudo chmod 660 $HOME/system/monksystem/db.sqlite3
