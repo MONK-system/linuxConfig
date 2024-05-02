@@ -1,7 +1,4 @@
-# dwmKioskMode
-Config files for running dwm in kiosk mode with surf browser
-
-Modify the URL in .xinitrc to change website. 
+# MONK Linuc Configuration
 
 # Setup for Debian network install
 https://www.debian.org/CD/netinst/
@@ -43,7 +40,7 @@ There is a Vagrant box for the system, which you can install with the following 
 ```
       vagrant init monk
 ```
-5. Replace the content in the Vagrantfile with the Vagrantfile from the repo.
+5. Replace the content in the newly generated Vagrantfile with the content from Vagrantfile_copy from the repo.
 6. Start the VM by running:
 ```
       vagrant up
