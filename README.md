@@ -31,21 +31,13 @@ If you get OperationalError at / no such table: django_session, run python manag
 # Vagrant Setup
 There is a Vagrant box for the system, which you can install with the following steps:
 1. Clone the repo
-2. [Install Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Install Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant#linux)
-3. Navigate to the repository, and run 
-```
-      vagrant box add monk package.box
-```
-4.Initialize the Vagrant Environment with 
-```
-      vagrant init monk
-```
-5. Replace the content in the newly generated Vagrantfile with the content from Vagrantfile_copy from the repo.
-6. Start the VM by running:
+2. [Install Virtualbox](https://www.virtualbox.org/wiki/Downloads) and [Vagrant](https://developer.hashicorp.com/vagrant/install?product_intent=vagrant#linux)
+3. Navigate to the vagrant directory and run the following:
 ```
       vagrant up
 ```
-7. Now you can access the box in Virtualbox
+```
+7. Wait for the system to install, and you should now be able to access the box in Virtualbox
 
 ### NOTE: username: vagrant, password:vagrant, root password: vagrant
 
