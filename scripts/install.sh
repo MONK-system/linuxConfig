@@ -10,7 +10,7 @@ fi
 
 echo "Running the packages script..."
 # Runs the packages script
-sudo $HOME/linuxConfig/packages.sh
+sudo $HOME/linuxConfig/scripts/packages.sh
 
 echo "Creating ~/.config directory..."
 mkdir $HOME/.config
@@ -18,17 +18,17 @@ mkdir $HOME/.config
 echo "Cloning and configuring DWM..."
 # Installs and configures DWM
 sudo git clone https://git.suckless.org/dwm $HOME/.config/dwm
-sudo cp $HOME/linuxConfig/config.h $HOME/.config/dwm
+sudo cp $HOME/linuxConfig/config/config.h $HOME/.config/dwm
 cd $HOME/.config/dwm
 sudo make clean install
 
 echo "Appending content to /etc/apparmor.d/usr.bin.surf..."
 sudo su -c '
-          cat /home/monk/linuxConfig/usr.bin.surf > /etc/apparmor.d/usr.bin.surf
+          cat /home/monk/linuxConfig/config/usr.bin.surf > /etc/apparmor.d/usr.bin.surf
 
           echo "Setting up Samba File Share"
           sudo mkdir /samba_share
-          sudo cat /home/monk/linuxConfig/smb.conf >>/etc/samba/smb.conf
+          sudo cat /home/monk/linuxConfig/config/smb.conf >>/etc/samba/smb.conf
           sudo groupadd smbshare
           sudo chgrp -R smbshare /samba_share
           sudo chmod 2770 /samba_share
@@ -47,13 +47,13 @@ sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
 
 echo "Moving .xinitrc file..."
 # Move .xinitrc file
-sudo mv $HOME/linuxConfig/.xinitrc $HOME/
+sudo mv $HOME/linuxConfig/config/.xinitrc $HOME/
 
 echo "Appending content to ~/.profile..."
 # Append content to ~/.profile
-sudo cat $HOME/linuxConfig/.profile >>$HOME/.profile
+sudo cat $HOME/linuxConfig/config/.profile >>$HOME/.profile
 
-sudo mv $HOME/linuxConfig/monkserver /etc/nginx/sites-available/
+sudo mv $HOME/linuxConfig/config/monkserver /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/monkserver /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
 
