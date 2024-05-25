@@ -20,16 +20,6 @@ cp $HOME/linuxConfig/config/config.h $HOME/.config/dwm
 cd $HOME/.config/dwm
 sudo make clean install
 
-echo "Setting up Samba File Share..."
-mkdir -p $HOME/system/shared_folder
-sudo groupadd smbshare
-sudo chgrp -R smbshare $HOME/system/shared_folder
-sudo chmod 2770 $HOME/system/shared_folder
-sudo usermod -aG smbshare $USER
-sudo smbpasswd -a $USER
-sudo smbpasswd -e $USER
-sudo systemctl restart nmbd
-
 echo "Appending content to /etc/apparmor.d/usr.bin.surf..."
 sudo bash -c 'cat /home/monk/linuxConfig/config/usr.bin.surf > /etc/apparmor.d/usr.bin.surf'
 
@@ -50,10 +40,6 @@ sudo systemctl restart nginx
 echo "Cloning and setting up MONK system..."
 git clone https://github.com/MONK-system/system $HOME/system
 
-echo "Switching to the 'dev' branch in the system repository..."
-cd $HOME/system
-git checkout main
-
 echo "Setting permissions for MONK system..."
 chmod 775 $HOME/system/monksystem/
 chown $USER:$USER $HOME/system/monksystem/
@@ -66,5 +52,15 @@ chmod -R u+w $HOME/system/monkenv
 source $HOME/system/monkenv/bin/activate
 pip install gunicorn django plotly numpy pandas git+https://github.com/MONK-system/library.git
 python3 $HOME/system/monksystem/manage.py migrate
+
+echo "Setting up Samba File Share..."
+mkdir -p $HOME/system/shared_folder
+sudo groupadd smbshare
+sudo chgrp -R smbshare $HOME/system/shared_folder
+sudo chmod 2770 $HOME/system/shared_folder
+sudo usermod -aG smbshare $USER
+sudo smbpasswd -a $USER
+sudo smbpasswd -e $USER
+sudo systemctl restart nmbd
 
 echo "Script completed. Restart to run MONK-system"
