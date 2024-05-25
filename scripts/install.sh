@@ -61,6 +61,10 @@ sudo chmod 2770 $HOME/system/shared_folder
 sudo usermod -aG smbshare $USER
 sudo smbpasswd -a $USER
 sudo smbpasswd -e $USER
+
+sudo bash -c 'cat /home/monk/linuxConfig/config/smb.conf >> /etc/samba/smb.conf'
+
+sudo systemctl restart smbd
 sudo systemctl restart nmbd
 
 echo "Script completed. Restart to run MONK-system"
