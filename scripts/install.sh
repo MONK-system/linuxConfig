@@ -20,22 +20,18 @@ cp $HOME/linuxConfig/config/config.h $HOME/.config/dwm
 cd $HOME/.config/dwm
 sudo make clean install
 
-echo "Setting up Samba File Share as root..."
-sudo su -c '
-    mkdir /samba_share
-    groupadd smbshare
-    chgrp -R smbshare /samba_share
-    chmod 2770 /samba_share
-    usermod -aG smbshare $USER
-    smbpasswd -a $USER
-    smbpasswd -e $USER
-    systemctl restart nmbd
-'
+echo "Setting up Samba File Share..."
+mkdir -p $HOME/system/shared_folder
+sudo groupadd smbshare
+sudo chgrp -R smbshare $HOME/system/shared_folder
+sudo chmod 2770 $HOME/system/shared_folder
+sudo usermod -aG smbshare $USER
+sudo smbpasswd -a $USER
+sudo smbpasswd -e $USER
+sudo systemctl restart nmbd
 
-echo "Appending content to /etc/apparmor.d/usr.bin.surf as root..."
-sudo su -c '
-    cat /home/monk/linuxConfig/config/usr.bin.surf > /etc/apparmor.d/usr.bin.surf
-'
+echo "Appending content to /etc/apparmor.d/usr.bin.surf..."
+sudo bash -c 'cat /home/monk/linuxConfig/config/usr.bin.surf > /etc/apparmor.d/usr.bin.surf'
 
 echo "Reloading AppArmor profile..."
 sudo apparmor_parser -r /etc/apparmor.d/usr.bin.surf
@@ -46,7 +42,7 @@ mv $HOME/linuxConfig/config/.xinitrc $HOME/
 echo "Appending content to ~/.profile..."
 cat $HOME/linuxConfig/config/.profile >>$HOME/.profile
 
-echo "Setting up Nginx configuration as root..."
+echo "Setting up Nginx configuration..."
 sudo mv $HOME/linuxConfig/config/monkserver /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/monkserver /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
