@@ -1,9 +1,9 @@
-# MONK Linuc Configuration
+# MONK Linux Configuration
 
 # Setup for Debian network install
 https://www.debian.org/CD/netinst/
 
-UNCHECK DEBIAN DESKTOP AND GNOME DURING INSTALLATION
+Uncheck Debian desktop and GNOME during the installation
 
 Make new user called "monk"
 
@@ -24,9 +24,6 @@ Then run
     source ~/.profile
     
 It will now auto-run every time you log into the user.
-
-Need to add you IP under ALLOWED_HOSTS in monksystem/settings.py (Find it with "ip a")
-If you get OperationalError at / no such table: django_session, run python manage.py migrate 
 
 # Vagrant Setup
 There is a Vagrant box for the system, which you can install with the following steps:
